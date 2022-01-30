@@ -32,11 +32,11 @@ def solve():
             correctLetters = ( list("." * totalLetters) )
         for i in range(0, len(response)):
             if response[i] == 'g':
-                correctLetters[i] = (guessed[i])
+                correctLetters[i] = guessed[i]
             elif correctLetters[i] != '.':
-                break
+                continue
             else:
-                correctLetters[i] = ('.')
+                correctLetters[i] = '.'
         
         for i in range(0, len(response)):
             if response[i] == 'o' and ( guessed[i] + str(i) ) not in displacedLetters:
@@ -44,7 +44,6 @@ def solve():
             elif response[i] == '.' and guessed[i] not in nullLetters:
                 nullLetters.append(guessed[i])
                 
-        
         regex = "^"
         for i in range(0, totalLetters):
             if correctLetters[i] != ".":
