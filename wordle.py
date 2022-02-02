@@ -71,31 +71,17 @@ def solve():
         words = []
         for word in dictionary:
             if re.search(regex, word): # Has correct letters in correct spaces, contains no null letters
-                if totalLetters < 9:
-                    if len(set(word)) == len(word): # No duplicate letters
-                        if displacedLetters:
-                            correct = 0
-                            for i in range(0, len(displacedLetters)):
-                                if displacedLetters[i][0] in word: # Contains displaced letters
-                                    correct += 1
-                                else:
-                                    break
-                            if correct == len(displacedLetters) and word not in words:
-                                words.append(word)
+                if displacedLetters:
+                    correct = 0
+                    for i in range(0, len(displacedLetters)):
+                        if displacedLetters[i][0] in word: # Contains displaced letters
+                            correct += 1
                         else:
-                            words.append(word)
-                else:
-                    if displacedLetters:
-                        correct = 0
-                        for i in range(0, len(displacedLetters)):
-                            if displacedLetters[i][0] in word: # Contains displaced letters
-                                correct += 1
-                            else:
-                                break
-                        if correct == len(displacedLetters) and word not in words:
-                            words.append(word)
-                    else:
+                            break
+                    if correct == len(displacedLetters) and word not in words:
                         words.append(word)
+                else:
+                    words.append(word)
         
         words = sorted(words, key=len)
         for word in words:
