@@ -24,7 +24,7 @@ Codex
 Our dictionary is much larger than the one used by the current version of Wordle. Sometimes, possible words are not found in Wordle's dictionary. 
 
 
-Example
+## Example
 
 ![Wordle screenshot](./example.jpg)
 
