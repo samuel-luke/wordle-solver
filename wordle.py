@@ -42,7 +42,12 @@ def solve():
             if response[i] == 'o' and ( guessed[i] + str(i) ) not in displacedLetters:
                 displacedLetters.append( guessed[i] + str(i) )
             elif response[i] == '.' and guessed[i] not in nullLetters:
-                nullLetters.append(guessed[i])
+                notADuplicate = True
+                for j in range(0, len(displacedLetters)):
+                    if displacedLetters[j][0] == guessed[i]:
+                        notADuplicate = False
+                if notADuplicate:
+                    nullLetters.append(guessed[i])
                 
         regex = "^"
         for i in range(0, totalLetters):
@@ -61,7 +66,7 @@ def solve():
             else:
                 regex += "."
         regex += "$"
-        # print(regex)
+        print(regex)
         
         dictionary = set()
         file = open("words_alpha.txt", "r")
