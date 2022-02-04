@@ -8,6 +8,11 @@ def solve():
     nullLetters = []
     totalLetters = 0
     
+    dictionary = set()
+    file = open("words_alpha.txt", "r")
+    for word in file:
+        dictionary.add(word.strip().lower())
+    
     solving = True
     while(solving):
         guessed = ""
@@ -21,7 +26,11 @@ def solve():
             response=input(":").strip()
             
             if len(guessed) != len(response):
-                print("Your guessed word and the response are different lengths, try again")
+                print("Your guessed word and the response are different lengths. Try again")
+            elif len(correctLetters) != 0 and len(guessed) != len(correctLetters):
+                print("Your guessed word is a different length than previous guesses. Try again")
+            elif guessed not in dictionary:
+                print("Your guessed word wasn't found in our dictionary. There might have been a typo. Try again.")
             else:
                 guessed = list(guessed)
                 response = list(response)
@@ -66,12 +75,7 @@ def solve():
             else:
                 regex += "."
         regex += "$"
-        print(regex)
-        
-        dictionary = set()
-        file = open("words_alpha.txt", "r")
-        for word in file:
-            dictionary.add(word.strip().lower())
+        # print("Regex", regex)
             
         words = []
         for word in dictionary:
