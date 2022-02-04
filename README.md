@@ -15,9 +15,11 @@ Enter Wordle's response: 'g' for green; 'o' for orange; '.' for blank. eg o.oo..
 :
 ```
 
-'g': green/correct letter.
-'o': orange/displaced letter.
-'.': gray/blank letter.
+Codex
+
+    'g': green/correct letter.
+    'o': orange/displaced letter.
+    '.': gray/blank letter.
 
 Our dictionary is much larger than the one used by the current version of Wordle. Sometimes, possible words are not found in Wordle's dictionary. 
 
