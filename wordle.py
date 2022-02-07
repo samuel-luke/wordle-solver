@@ -22,20 +22,27 @@ def solve():
         while(gettingInput):
             print("Enter your guessed word. 'ctrl-c' to exit")
             guessed=input(":").strip()
+            
+            # Error handling
+            if len(correctLetters) != 0 and len(guessed) != len(correctLetters):
+                print("\nYour guessed word is a different length than previous guesses. Try again.\n")
+                continue
+            elif guessed not in dictionary:
+                print("\nYour guessed word wasn't found in our dictionary. There might have been a typo. Try again.\n")
+                continue
+            
             print("Enter Wordle's response: 'g' for green; 'o' for orange; '.' for blank. eg o.oo..og")
             response=input(":").strip()
             
+            # Error handling
             if len(guessed) != len(response):
-                print("Your guessed word and the response are different lengths. Try again")
-            elif len(correctLetters) != 0 and len(guessed) != len(correctLetters):
-                print("Your guessed word is a different length than previous guesses. Try again")
-            elif guessed not in dictionary:
-                print("Your guessed word wasn't found in our dictionary. There might have been a typo. Try again.")
-            else:
-                guessed = list(guessed)
-                response = list(response)
-                totalLetters = len(guessed)
-                gettingInput = False
+                print("\nYour guessed word and the response are different lengths. Try again.\n")
+                continue
+            
+            guessed = list(guessed)
+            response = list(response)
+            totalLetters = len(guessed)
+            gettingInput = False
         
         if len(correctLetters) == 0:      
             correctLetters = ( list("." * totalLetters) )
